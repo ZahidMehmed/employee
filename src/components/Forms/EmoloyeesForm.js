@@ -161,9 +161,9 @@ const EmoloyeesForm = () => {
 
         <Row className='mt-3 justify-content-around' >
           <EmpFormComp
+              label={'Desigination'}
               placeholder={'Desigination'}
-            label={'Desigination'}
-            typeof ={'text'}
+              typeof ={'text'}
             value={designation}
             onChangeEvent={(e) => {
               setdesignation(e.target.value);
@@ -221,7 +221,7 @@ const EmoloyeesForm = () => {
         </Row>
 
         <Row 
-          className='justify-content-center mt-3'>
+          className='justify-content-end mt-3'>
           <EmpFormComp
               placeholder={'Home Town Address'}
             label={'Address'}
@@ -237,7 +237,7 @@ const EmoloyeesForm = () => {
 
           />
         </Row>
-        <Row style={{ marginLeft: "8%" }} className='justify-content-start mt-3 mb-3'>
+        <Row  className='justify-content-end mt-3 mb-3'>
           <Col lg="4" md="4" sm="8">
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
               <Button type='submit' color='primary'>Submit</Button>

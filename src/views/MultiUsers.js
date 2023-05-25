@@ -49,6 +49,10 @@ const MultiUsers = () => {
     setUpdate(result.Update)
     setDelete(result.Delete)
     setleaveApprrove(result.leaveApprrove)
+    setEmpList(result.EmpList)
+    setPolicy(result.Policy)
+    setEvents(result.Events)
+    setEmpLeaves(result.EmpLeaves)
   }
 
   const putPermissions = async (e) => {
