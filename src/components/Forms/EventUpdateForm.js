@@ -20,7 +20,7 @@ const EventUpdateForm = () => {
 
     const getApibyID = async (id) => {
 
-        let response = await fetch(`http://localhost:350/eventsUpdate/${params.id}`)
+        let response = await fetch(`https://employee-backend-one.vercel.app/eventsUpdate/${params.id}`)
         response = await response.json()
         console.log(response.eventStartTime)
         setTitle(response.title)

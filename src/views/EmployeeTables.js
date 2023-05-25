@@ -31,7 +31,7 @@ const EmployeeTables = () => {
   const [DeletePermission, setDeletePermission] = useState(true)
   const Navigate = useNavigate();
   const handleOnGet = async () => {
-    let result = await fetch(`http://localhost:350/EmployeeList_Get`)
+    let result = await fetch(`https://employee-backend-one.vercel.app/EmployeeList_Get`)
     result = await result.json()
     console.log(result)
     setcategory(result)
@@ -42,7 +42,7 @@ const EmployeeTables = () => {
 
   const deleteData = async (id) => {
     setIsModalOpen(false);
-    let result = await fetch(`http://localhost:350/EmployeeList_Delete/${id}`, {
+    let result = await fetch(`https://employee-backend-one.vercel.app/EmployeeList_Delete/${id}`, {
       method: "delete"
     }
     )
@@ -76,7 +76,7 @@ const EmployeeTables = () => {
 
 
   const getAPIbyID = async (item) => {
-    let result = await fetch(`http://localhost:350/AdminPermisionsId/${id}`)
+    let result = await fetch(`https://employee-backend-one.vercel.app/AdminPermisionsId/${id}`)
     result = await result.json()
     console.log(result)
     setAddPermission(result.Add)

@@ -34,7 +34,7 @@ const MultiUsers = () => {
 
 
   const AdmineOnGet = async () => {
-    let result = await fetch(`http://localhost:350/AdminDetail`)
+    let result = await fetch(`https://employee-backend-one.vercel.app/AdminDetail`)
     result = await result.json()
     setAdmin(result)
 
@@ -42,7 +42,7 @@ const MultiUsers = () => {
 
   const getAPIbyID = async (item) => {
     setId(item._id)
-    let result = await fetch(`http://localhost:350/AdminPermisionsId/${item._id}`)
+    let result = await fetch(`https://employee-backend-one.vercel.app/AdminPermisionsId/${item._id}`)
     result = await result.json()
     console.log(result)
     setAdd(result.Add)
@@ -54,7 +54,7 @@ const MultiUsers = () => {
   const putPermissions = async (e) => {
     e.preventDefault();
 
-    let respone = await fetch(`http://localhost:350/AdminPermisions/${Id}`, {
+    let respone = await fetch(`https://employee-backend-one.vercel.app/AdminPermisions/${Id}`, {
       method: 'put',
       headers: {
         'Content-Type': "Application/Json"

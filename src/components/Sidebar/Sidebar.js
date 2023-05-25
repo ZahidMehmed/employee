@@ -50,7 +50,7 @@ function Sidebar(props) {
   const authV = JSON.parse(authering)
   let id = authV?.user?._id
   const getAdminRequest = async () => {
-    let result = await fetch(`http://localhost:350/AdminPermisionsId/${id}`)
+    let result = await fetch(`https://employee-backend-one.vercel.app/AdminPermisionsId/${id}`)
     result = await result.json()
     setEmpList(result.EmpList)
     setEmpLeaves(result.EmpLeaves)
@@ -59,7 +59,7 @@ function Sidebar(props) {
   }
   const getSuperAdminRequest = async () => {
     try {
-      let result = await fetch(`http://localhost:350/userGetId/${id}`);
+      let result = await fetch(`https://employee-backend-one.vercel.app/userGetId/${id}`);
       result = await result.json();
     setEmpList(result.EmpList)
     setEmpLeaves(result.EmpLeaves)
@@ -165,7 +165,7 @@ function Sidebar(props) {
                   </NavLink>
                 </li>
               }
-              {auth == "william@gmail.com" &&
+              {auth == "ali@gmail.com" &&
                 <li>
                   <NavLink
                     to="/MultiUsers"

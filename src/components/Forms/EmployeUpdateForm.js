@@ -72,7 +72,7 @@ const EmoloyeesUpdateForm = () => {
       return;
     }
 
-    let result = await fetch(`http://localhost:350/EmployeeList_Updatedy_Id/${params.id}`, {
+    let result = await fetch(`https://employee-backend-one.vercel.app/EmployeeList_Updatedy_Id/${params.id}`, {
       method: 'put',
       headers: {
         'Content-Type': "Application/Json"
@@ -97,7 +97,7 @@ const EmoloyeesUpdateForm = () => {
   }
    const getAPIbyID =async ()=>{
     console.log(params.id)
-    let result = await fetch(`http://localhost:350/EmployeeListById/${params.id}`)
+    let result = await fetch(`https://employee-backend-one.vercel.app/EmployeeListById/${params.id}`)
     result = await result.json()
     console.log(result)
     setfullName(result.fullName)

@@ -89,7 +89,7 @@ function Events() {
     formData.append('eventEndTime', eventEndTime);
     formData.append('posterImage', posterImage);
     try {
-      let response = await fetch(`http://localhost:350/addEvents`, {
+      let response = await fetch(`https://employee-backend-one.vercel.app/addEvents`, {
         method: 'POST',
         body: formData,
       })
@@ -131,7 +131,7 @@ function Events() {
   const [eventCalStartDate, setCalEventStartDate] = useState(new Date());
   const [eventCalEndDate, setCalEventEndDate] = useState(new Date());
   const getAPI = async () => {
-    let response = await fetch(`http://localhost:350/eventsDetails`)
+    let response = await fetch(`https://employee-backend-one.vercel.app/eventsDetails`)
     response = await response.json()
 
     setEvent(response)
@@ -157,7 +157,7 @@ function Events() {
   const handleOnDelete = async (id) => {
     setIsModalOpen(false);
 
-    let result = await fetch(`http://localhost:350/eventsDelete/${id}`, {
+    let result = await fetch(`https://employee-backend-one.vercel.app/eventsDelete/${id}`, {
       method: "delete"
     }
     )
@@ -197,7 +197,7 @@ function Events() {
   let id = authV.user._id
 
   const getAdminRequest = async () => {
-    let result = await fetch(`http://localhost:350/AdminPermisionsId/${id}`)
+    let result = await fetch(`https://employee-backend-one.vercel.app/AdminPermisionsId/${id}`)
     result = await result.json()
     console.log(result)
     setAddPermission(result.Add)
@@ -207,7 +207,7 @@ function Events() {
 
   const getSuperAdminRequest = async () => {
     try {
-      let response = await fetch(`http://localhost:350/userGetId/${id}`);
+      let response = await fetch(`https://employee-backend-one.vercel.app/userGetId/${id}`);
       response = await response.json();
       setAutherized(response.status)
 
@@ -579,7 +579,7 @@ function Events() {
                                      justify-content-around">
                                   <div style={{ width: "40%" }}>
                                     {SelectedEvent.posterImage ? (
-                                      <Image src={`http://localhost:350/uploads/${SelectedEvent.posterImage}`}
+                                      <Image src={`https://employee-backend-one.vercel.app/uploads/${SelectedEvent.posterImage}`}
                                         style={{ width: "100%" }} />) : (<></>)}
                                   </div>
                           

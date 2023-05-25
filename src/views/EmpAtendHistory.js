@@ -36,7 +36,7 @@ const EmpAtendHistory = () => {
     let key = event.target.value
     console.log(key)
     if (key) {
-      let response = await fetch(`http://localhost:350/Search/${key}`)
+      let response = await fetch(`https://employee-backend-one.vercel.app/Search/${key}`)
       response = await response.json()
       const filteredData = response.filter(item => item.employeeId === params.id)
       if (filteredData) {

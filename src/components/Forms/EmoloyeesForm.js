@@ -70,7 +70,7 @@ const EmoloyeesForm = () => {
       setErr(errors);
       return;
     }
-    let result = await fetch(`http://localhost:350/EmployeeList`, {
+    let result = await fetch(`https://employee-backend-one.vercel.app/EmployeeList`, {
       method: 'post',
       headers: {
         'Content-Type': "Application/Json"

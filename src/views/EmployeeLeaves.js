@@ -30,7 +30,7 @@ const EmployeeLeaves = () => {
     // Fetch all leave requests from the server
     const fetchLeaveRequests = async () => {
       try {
-        const response = await fetch('http://localhost:350/Leave');
+        const response = await fetch('https://employee-backend-one.vercel.app/Leave');
         const data = await response.json();
         setLeaveRequests(data);
         setLoading(false);
@@ -42,7 +42,7 @@ const EmployeeLeaves = () => {
 
     const getLeaveRequest = async (id) => {
       try {
-        const response = await fetch(`http://localhost:350/leave/${id}`);
+        const response = await fetch(`https://employee-backend-one.vercel.app/leave/${id}`);
         const data = await response.json();
         console.log(data);
         // Handle the response data here
@@ -56,7 +56,7 @@ const EmployeeLeaves = () => {
   }, []);
   const handleStatusUpdate = async (id, status) => {
     try {
-      const response = await fetch(`http://localhost:350/leave/${id}/${status}`, { method: 'PUT' });
+      const response = await fetch(`https://employee-backend-one.vercel.app/leave/${id}/${status}`, { method: 'PUT' });
       const data = await response.json();
       setLeaveRequests(prevState => {
         const index = prevState.findIndex(request => request._id === id);
@@ -74,7 +74,7 @@ const EmployeeLeaves = () => {
 
 
   const handleDelete = async (id) => {
-    let result = fetch(`http://localhost:350/leaveDelete/${id}`, {
+    let result = fetch(`https://employee-backend-one.vercel.app/leaveDelete/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -104,7 +104,7 @@ const EmployeeLeaves = () => {
   let id = authV.user._id
 
   const getAdminRequest = async () => {
-    let result = await fetch(`http://localhost:350/AdminPermisionsId/${id}`)
+    let result = await fetch(`https://employee-backend-one.vercel.app/AdminPermisionsId/${id}`)
     result = await result.json()
     console.log(result)
     setDeletePermission(result.Delete)
@@ -112,7 +112,7 @@ const EmployeeLeaves = () => {
   }
   const getSuperAdminRequest = async () => {
     try {
-      let response = await fetch(`http://localhost:350/userGetId/${id}`);
+      let response = await fetch(`https://employee-backend-one.vercel.app/userGetId/${id}`);
       response = await response.json();
 
 

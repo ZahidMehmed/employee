@@ -22,7 +22,7 @@ const LogIn = () => {
   const handleClick = async (e) => {
     console.log('Email: ', email, ' Password: ', password);
     setErr(false); // reset the error state
-    const result = await fetch('http://localhost:350/userLogin', {
+    const result = await fetch('https://employee-backend-one.vercel.app/userLogin', {
       method: 'post',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
@@ -45,7 +45,7 @@ const LogIn = () => {
 
     console.log('Email: ', email, ' Password: ', password);
     setErr(false); // reset the error state
-    const result = await fetch('http://localhost:350/AdminLogin', {
+    const result = await fetch('https://employee-backend-one.vercel.app/AdminLogin', {
       method: 'post',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
