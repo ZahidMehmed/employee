@@ -100,7 +100,9 @@ const EmoloyeesForm = () => {
       <Form onSubmit={handleOnSubmit} className='EmpForm'>
         <Row className='mt-3 justify-content-around' >
           <EmpFormComp
+          placeholder={'Full Name'}
             label={'Full Name'}
+            typeof ={'text'}
             value={fullName}
             onChangeEvent={(e) => {
               setfullName(e.target.value);
@@ -113,6 +115,7 @@ const EmoloyeesForm = () => {
           />
           <EmpFormComp
             label={'Email'}
+            typeof ={'text'}
             value={email}
             onChangeEvent={(e) => {
               setemail(e.target.value);
@@ -127,7 +130,9 @@ const EmoloyeesForm = () => {
 
         <Row className='mt-3 justify-content-around' >
           <EmpFormComp
+              placeholder={'Password'}
             label={'password'}
+            typeof ={'text'}
             value={password}
             onChangeEvent={(e) => {
               setpassword(e.target.value);
@@ -139,7 +144,9 @@ const EmoloyeesForm = () => {
             errorMessage={Err && Err.password ? Err.password : null}
           />
           <EmpFormComp
+              placeholder={'CNIC'}
             label={'CNIC'}
+            typeof ={'text'}
             value={CNIC}
             onChangeEvent={(e) => {
               setCNIC(e.target.value);
@@ -154,7 +161,9 @@ const EmoloyeesForm = () => {
 
         <Row className='mt-3 justify-content-around' >
           <EmpFormComp
+              placeholder={'Desigination'}
             label={'Desigination'}
+            typeof ={'text'}
             value={designation}
             onChangeEvent={(e) => {
               setdesignation(e.target.value);
@@ -167,6 +176,8 @@ const EmoloyeesForm = () => {
           />
           <EmpFormComp
             label={'Salary'}
+            placeholder={'Salary'}
+            typeof ={'text'}
             value={salary}
             onChangeEvent={(e) => {
               setsalary(e.target.value);
@@ -181,7 +192,9 @@ const EmoloyeesForm = () => {
 
         <Row className='mt-3 justify-content-around' >
           <EmpFormComp
+          
             label={'Joining date'}
+            typeof ={'date'}
             value={joiningDate}
             onChangeEvent={(e) => {
               setjoiningDate(e.target.value);
@@ -194,6 +207,7 @@ const EmoloyeesForm = () => {
           />
           <EmpFormComp
             label={'Last Degree'}
+            placeholder={'Dagree Name'}
             value={lastDegree}
             onChangeEvent={(e) => {
               setlastDegree(e.target.value);
@@ -206,9 +220,10 @@ const EmoloyeesForm = () => {
           />
         </Row>
 
-        <Row style={{ marginLeft: "7%" }}
-          className='justify-content-start mt-3'>
+        <Row 
+          className='justify-content-center mt-3'>
           <EmpFormComp
+              placeholder={'Home Town Address'}
             label={'Address'}
             value={address}
             onChangeEvent={(e) => {

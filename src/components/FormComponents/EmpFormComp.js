@@ -3,17 +3,17 @@ import { Col, Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Card, CardHeader, FormFeedback, CardBody, CardTitle, Row, Table } from "reactstrap";
 const EmpFormComp = (props) => {
   return (
-    <Col lg="4" md="4" sm="8">
+    <Col lg="6" md="6" sm="8">
     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label
             htmlFor="exampleEmail"
             className="mr-sm-2">{props.label}</Label>
         <Input
             bsSize="sm"
-            type="text"
+            type={props.typeof}
             name="email"
             id="exampleName"
-            placeholder="kane Wiliamson etc"
+            placeholder={props.placeholder}
             value={props.value}
             onChange={props.onChangeEvent}
             invalid={props.invalid}
