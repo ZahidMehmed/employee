@@ -1,8 +1,6 @@
 
 import React, {useState, useEffect} from "react";
 import { FiUsers} from 'react-icons/fi';
-import {GrProjects} from 'react-icons/gr'
-import { Line, Pie } from "react-chartjs-2";
 import { faEnvelope, faCalendarDays, faTasks } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import {
@@ -15,11 +13,7 @@ import {
   Col
 } from "reactstrap";
 // core components
-import {
-  dashboard24HoursPerformanceChart,
-  dashboardEmailStatisticsChart,
-  dashboardNASDAQChart
-} from "variables/charts.js";
+
 import { Link } from "react-router-dom";
 const authering = localStorage.getItem('user')
 function Dashboard() {
@@ -165,12 +159,7 @@ function Dashboard() {
                 <p className="card-category">24 Hours performance</p>
               </CardHeader>
               <CardBody>
-                <Line
-                  data={dashboard24HoursPerformanceChart.data}
-                  options={dashboard24HoursPerformanceChart.options}
-                  width={400}
-                  height={100}
-                />
+              
               </CardBody>
               <CardFooter>
                 <hr />
