@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../assets/css/Forms.css'
-import { Form, FormGroup, Label, Input, FormFeedback, Button, Row, Col } from 'reactstrap';
+import { Form, FormGroup, Label, Input, FormFeedback, Button, Row, Col, Container } from 'reactstrap';
 import EmpFormComp from 'components/FormComponents/EmpFormComp';
 const EmoloyeesForm = () => {
 
@@ -97,12 +97,12 @@ const EmoloyeesForm = () => {
 
   return (
     <>
-      <Form onSubmit={handleOnSubmit} className='EmpForm'>
-        <Row className='mt-3 justify-content-around' >
+      <Form onSubmit={handleOnSubmit} className='EmpForm '>
+        <Container className='justify-content-center' >
           <EmpFormComp
-          placeholder={'Full Name'}
+            placeholder={'Full Name'}
             label={'Full Name'}
-            typeof ={'text'}
+            typeof={'text'}
             value={fullName}
             onChangeEvent={(e) => {
               setfullName(e.target.value);
@@ -113,9 +113,11 @@ const EmoloyeesForm = () => {
             invalid={Err && Err.fullName ? true : false}
             errorMessage={Err && Err.fullName ? Err.fullName : null}
           />
+
           <EmpFormComp
             label={'Email'}
-            typeof ={'text'}
+            placeholder={'jhon@gmail.com'}
+            typeof={'text'}
             value={email}
             onChangeEvent={(e) => {
               setemail(e.target.value);
@@ -126,27 +128,30 @@ const EmoloyeesForm = () => {
             invalid={Err && Err.email ? true : false}
             errorMessage={Err && Err.email ? Err.email : null}
           />
-        </Row>
 
-        <Row className='mt-3 justify-content-around' >
-          <EmpFormComp
+       
+            <EmpFormComp
+            lg ="5" md= "5" sm ="8"
               placeholder={'Password'}
-            label={'password'}
-            typeof ={'text'}
-            value={password}
-            onChangeEvent={(e) => {
-              setpassword(e.target.value);
-              if (Err && Err.password) {
-                setErr({ ...Err, password: null });
-              }
-            }}
-            invalid={Err && Err.password ? true : false}
-            errorMessage={Err && Err.password ? Err.password : null}
-          />
+              label={'password'}
+              typeof={'text'}
+              value={password}
+              onChangeEvent={(e) => {
+                setpassword(e.target.value);
+                if (Err && Err.password) {
+                  setErr({ ...Err, password: null });
+                }
+              }}
+              invalid={Err && Err.password ? true : false}
+              errorMessage={Err && Err.password ? Err.password : null}
+            />
+         
+
           <EmpFormComp
-              placeholder={'CNIC'}
+           lg ="5" md= "5" sm ="8"
+            placeholder={'CNIC'}
             label={'CNIC'}
-            typeof ={'text'}
+            typeof={'text'}
             value={CNIC}
             onChangeEvent={(e) => {
               setCNIC(e.target.value);
@@ -157,13 +162,13 @@ const EmoloyeesForm = () => {
             invalid={Err && Err.CNIC ? true : false}
             errorMessage={Err && Err.CNIC ? Err.CNIC : null}
           />
-        </Row>
 
-        <Row className='mt-3 justify-content-around' >
+
           <EmpFormComp
-              label={'Desigination'}
-              placeholder={'Desigination'}
-              typeof ={'text'}
+          
+            label={'Desigination'}
+            placeholder={'Desigination'}
+            typeof={'text'}
             value={designation}
             onChangeEvent={(e) => {
               setdesignation(e.target.value);
@@ -175,9 +180,10 @@ const EmoloyeesForm = () => {
             errorMessage={Err && Err.designation ? Err.designation : null}
           />
           <EmpFormComp
+            lg ="5" md= "5" sm ="8"
             label={'Salary'}
             placeholder={'Salary'}
-            typeof ={'text'}
+            typeof={'text'}
             value={salary}
             onChangeEvent={(e) => {
               setsalary(e.target.value);
@@ -188,13 +194,13 @@ const EmoloyeesForm = () => {
             invalid={Err && Err.salary ? true : false}
             errorMessage={Err && Err.salary ? Err.salary : null}
           />
-        </Row>
 
-        <Row className='mt-3 justify-content-around' >
+
+
           <EmpFormComp
-          
+
             label={'Joining date'}
-            typeof ={'date'}
+            typeof={'date'}
             value={joiningDate}
             onChangeEvent={(e) => {
               setjoiningDate(e.target.value);
@@ -218,13 +224,11 @@ const EmoloyeesForm = () => {
             invalid={Err && Err.lastDegree ? true : false}
             errorMessage={Err && Err.lastDegree ? Err.lastDegree : null}
           />
-        </Row>
 
-        <Row 
-          className='justify-content-end mt-3'>
           <EmpFormComp
-              placeholder={'Home Town Address'}
+            placeholder={'country, city, home town, location'}
             label={'Address'}
+            typeof={'textarea'}
             value={address}
             onChangeEvent={(e) => {
               setaddress(e.target.value);
@@ -236,16 +240,16 @@ const EmoloyeesForm = () => {
             errorMessage={Err && Err.address ? Err.address : null}
 
           />
-        </Row>
-        <Row  className='justify-content-end mt-3 mb-3'>
-          <Col lg="4" md="4" sm="8">
-            <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-              <Button type='submit' color='primary'>Submit</Button>
-            </FormGroup>
-          </Col>
-        </Row>
-      </Form>
 
+          <Row className=' mt-5 mb-3'>
+            <Col lg="4" md="4" sm="8">
+              <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                <Button type='submit' color='primary'>Submit</Button>
+              </FormGroup>
+            </Col>
+          </Row>
+        </Container>
+      </Form>
 
     </>
   )

@@ -31,7 +31,6 @@ const EmoloyeesUpdateForm = () => {
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       errors.email = "Email is invalid";
     }
-
     if (!password) {
       errors.password = "Password is required";
     } else if (password.length < 6) {
@@ -118,7 +117,7 @@ const EmoloyeesUpdateForm = () => {
 
   return (
     <Form onSubmit={handleOnSubmit} className='EmpForm'>
-        <Row className='mt-3 justify-content-around' >
+     <div className='container justify-content-center'>
           <EmpFormComp
             label={'Full Name'}
             value={fullName}
@@ -147,10 +146,8 @@ const EmoloyeesUpdateForm = () => {
             invalid={Err && Err.email ? true : false}
             errorMessage={Err && Err.email ? Err.email : null}
           />
-        </Row>
-
-        <Row className='mt-3 justify-content-around' >
           <EmpFormComp
+             lg ="5" md= "5" sm ="8"
             label={'password'}
             placeholder={'Passowrd'}
             typeof ={'text'}
@@ -165,6 +162,7 @@ const EmoloyeesUpdateForm = () => {
             errorMessage={Err && Err.password ? Err.password : null}
           />
           <EmpFormComp
+             lg ="5" md= "5" sm ="8"
             label={'CNIC'}
             placeholder={'CNIC'}
             typeof ={'text'}
@@ -178,9 +176,9 @@ const EmoloyeesUpdateForm = () => {
             invalid={Err && Err.CNIC ? true : false}
             errorMessage={Err && Err.CNIC ? Err.CNIC : null}
           />
-        </Row>
+      
 
-        <Row className='mt-3 justify-content-around' >
+     
           <EmpFormComp
             label={'Desigination'}
             placeholder={'Desigination'}
@@ -196,6 +194,7 @@ const EmoloyeesUpdateForm = () => {
             errorMessage={Err && Err.designation ? Err.designation : null}
           />
           <EmpFormComp
+             lg ="5" md= "5" sm ="8"
             label={'Salary'}
             placeholder={'Salary'}
             typeof ={'text'}
@@ -209,9 +208,9 @@ const EmoloyeesUpdateForm = () => {
             invalid={Err && Err.salary ? true : false}
             errorMessage={Err && Err.salary ? Err.salary : null}
           />
-        </Row>
+     
 
-        <Row className='mt-3 justify-content-around' >
+       
           <EmpFormComp
             label={'Joining date'}
             placeholder={'Joining Date'}
@@ -240,10 +239,7 @@ const EmoloyeesUpdateForm = () => {
             invalid={Err && Err.lastDegree ? true : false}
             errorMessage={Err && Err.lastDegree ? Err.lastDegree : null}
           />
-        </Row>
-
-        <Row 
-          className='justify-content-end mt-3'>
+           
           <EmpFormComp
             label={'Address'}
             value={address}
@@ -257,14 +253,14 @@ const EmoloyeesUpdateForm = () => {
             errorMessage={Err && Err.address ? Err.address : null}
 
           />
-        </Row>
-        <Row style={{ marginLeft: "8%" }} className='justify-content-end mt-3 mb-3'>
+        <Row style={{ marginLeft: "8%" }} className=' mt-3 mb-3'>
           <Col lg="4" md="4" sm="8">
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
               <Button type='submit' color='primary'>Submit</Button>
             </FormGroup>
           </Col>
         </Row>
+        </div>
       </Form>
   )
 }

@@ -17,15 +17,41 @@ import {
 import { Link } from "react-router-dom";
 const authering = localStorage.getItem('user')
 function Dashboard() {
-  const [toalEmp, settoalEmp] = useState([])
+const [TotalEmp, setTotalEmp] = useState([])
+const [TotalLeave, setTotalLeave] = useState([])
+const [TotalEvent, setTotalEvent] = useState([])
   const handleOnGet = async () => {
-    let result = await fetch(`http://localhost:350/EmployeeList_Get`)
+    let result = await fetch(`https://employee-backend-one.vercel.app/EmployeeList_Get`)
     result = await result.json()
-    settoalEmp(result)
+    setTotalEmp(result)
+    console.log(result)
+   (result)
   }
- 
+  const fetchLeaveRequests = async () => {
+    
+      const response = await fetch('https://employee-backend-one.vercel.app/Leave');
+      const data = await response.json();
+      setTotalLeave (data);
+   
+    }
+    const getAPI = async () => {
+      let response = await fetch(`https://employee-backend-one.vercel.app/eventsDetails`)
+      response = await response.json()
+  
+      setTotalEvent(response)
+  
+  
+    }
+  const totalEmp = TotalEmp.length;
+  const totalLeave = TotalLeave.length
+  const TotalEv = TotalEvent.length
+  console.log(TotalEv)
+
+
   useEffect(() => {
     handleOnGet()
+    fetchLeaveRequests()
+    getAPI()
   }, [])
   return (
     <>
@@ -47,7 +73,7 @@ function Dashboard() {
                     <div className="numbers">
                      
                       <p className="card-category">Employees</p>
-                      <CardTitle tag="p">70</CardTitle>
+                      <CardTitle tag="p">{totalEmp}</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -76,7 +102,7 @@ function Dashboard() {
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Projects</p>
-                      <CardTitle tag="p">16</CardTitle>
+                      <CardTitle tag="p">0</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -106,7 +132,7 @@ function Dashboard() {
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Leaves</p>
-                      <CardTitle tag="p">23</CardTitle>
+                      <CardTitle tag="p">{totalLeave}</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -134,7 +160,7 @@ function Dashboard() {
                   <Col md="8" xs="7">
                     <div className="numbers">
                       <p className="card-category">Events</p>
-                      <CardTitle tag="p">+45K</CardTitle>
+                      <CardTitle tag="p">{TotalEv}</CardTitle>
                       <p />
                     </div>
                   </Col>

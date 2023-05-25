@@ -1,17 +1,12 @@
-import EventdetailsForm from "components/Forms/EventdetailsForm";
 import '../assets/css/Event.css'
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Modal, Image } from 'antd';
-import { Col, Button, Form, FormGroup, Label, Input, Container, UncontrolledAlert, Nav } from "reactstrap";
+import { Col, Button, Form, FormGroup, Label, Input, Container,} from "reactstrap";
 import { Card, CardHeader, CardBody, CardTitle, Row, Table, FormFeedback, ModalBody, ModalHeader } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faEdit, faHistory, faTrash } from '@fortawesome/free-solid-svg-icons'
-import Calendar from "react-calendar";
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
+import {  faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 function Events() {
-
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
@@ -245,7 +240,6 @@ function Events() {
                         }
                       </Col>
                     </div>
-
                   </CardHeader>
                   <pre>
                     <CardBody>
@@ -478,7 +472,9 @@ function Events() {
         <Row className="justify-content-end">
           <div className="model-container">
             <Modal open={isDetailsModalOpen} width={700} className="custom-modal" style={{ marginRight: "10%" }}
-              onCancel={handleCancelDetailsModal}>
+              onCancel={handleCancelDetailsModal}
+              onOk={handleCancelDetailsModal}
+              >
               <ModalHeader>Event Details</ModalHeader>
               <div>
                 <Container className="mt-5 empProfile">

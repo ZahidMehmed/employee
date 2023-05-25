@@ -74,7 +74,9 @@ function Dashboard(props) {
       <Sidebar
       />
       <div className="main-panel" ref={mainPanel}>
-       <DemoNavbar {...props} /> 
+       
+       <DemoNavbar  {...props} /> 
+
         <Routes>
         <Route element ={<Private/>}>
           {routes.map((prop, key) => {

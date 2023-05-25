@@ -3,12 +3,7 @@ import EventUpdateForm from "components/Forms/EventUpdateForm";
 import Dashboard from "views/Dashboard";
 import EmpAtendHistory from "views/EmpAtendHistory";
 import EmployeeDetails from "views/EmployeeDetails";
-import EmployeeLeaves from "views/EmployeeLeaves";
-import EmployeeTables from "views/EmployeeTables";
-import Events from "views/Events";
-import MultiUsers from "views/MultiUsers";
 import Pgae404 from "views/Pgae404";
-import Policy from "views/Policy";
 import UpdateEmployeeDetails from "views/UpdateEmpDetails";
 import User from "views/User";
 
@@ -21,21 +16,7 @@ const routes = [
     element:<Dashboard />
 
   },
-  // {
-  //   name :"Employees List",
-  //   path:"/tables",
-  //   element:<EmployeeTables />
-  // },
-  // {
-  //   name :"Event Detail ",
-  //   path:"/events",
-  //   element:<Events />
-  // },
-  // {
-  //   name :"Policy ",
-  //   path:"/policy",
-  //   element:<Policy/>
-  // },
+
 
   {
     name :"Employee Registration",
@@ -47,12 +28,7 @@ const routes = [
     path:"/UpdateEmployee/:id",
     element:<UpdateEmployeeDetails/>
   },
- 
-  // {
-  //   name :"Leaves",
-  //   path:"/Leaves",
-  //   element:<EmployeeLeaves />
-  // },
+
   {
     name :"Employee History",
     path:"/EmpAtendHistory/:id",
@@ -68,11 +44,7 @@ const routes = [
     path:"/updateEvent/:id",
     element:<EventUpdateForm />
   },
-  // {
-  //   name :"Admins",
-  //   path:"/MultiUsers",
-  //   element:<MultiUsers/>
-  // },
+
   {
     name :"Admins Registration",
     path:"/AdminsReg",

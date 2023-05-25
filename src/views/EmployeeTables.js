@@ -213,7 +213,9 @@ const EmployeeTables = () => {
             </Modal>
 
             <Modal open={isDetailsModalOpen}
-              onCancel={handleCancelDetailsModal}>
+              onCancel={handleCancelDetailsModal}
+              onOk={handleCancelDetailsModal}
+              >
               <ModalHeader
               >Employee Details</ModalHeader>
               {selectedEmployee && (

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faInfoCircle, faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faCheckSquare, faInfoCircle, faTrashCan, faXmark, faXmarkCircle, faXmarkSquare } from '@fortawesome/free-solid-svg-icons'
 import {
   Container,
   Card,
@@ -16,7 +16,7 @@ import {
   ModalHeader,
   ModalBody, ModalFooter, UncontrolledAlert
 } from "reactstrap";
-
+import '../assets/css/Leave.css'
 const EmployeeLeaves = () => {
   const [leaveRequests, setLeaveRequests] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -145,7 +145,8 @@ const EmployeeLeaves = () => {
                           <th>Leave For</th>
                           <th>Leave Details</th>
                           <th>Status</th>
-                          <th>Approve/Reject</th>
+                          <th>Approve</th>
+                          <th>Reject</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -156,6 +157,7 @@ const EmployeeLeaves = () => {
                             <td></td>
                             <td>{request.leaveFor}</td>
                             <td><FontAwesomeIcon icon={faInfoCircle}
+                              className='icon'
                               style={{ fontSize: "24px", color: "lightblue", marginLeft: 10, cursor: "pointer" }}
                               onClick={(item) => {
                                 showDetailsModal(request);
@@ -167,11 +169,19 @@ const EmployeeLeaves = () => {
                               {LeaveAprove !== true ? <></>
                                 :
                                 <div>
-                                  <FontAwesomeIcon icon={faCheck}
-                                    style={{ fontSize: "24px", color: "greenyellow", cursor: "pointer" }}
+                                  <FontAwesomeIcon icon={faCheckSquare}
+                                    className='iconCheck'
                                     onClick={() => handleStatusUpdate(request._id, 'Approved',)} />
-                                  <FontAwesomeIcon icon={faXmark}
-                                    style={{ fontSize: "24px", color: "red", marginLeft: 10, cursor: "pointer" }}
+
+                                </div>
+                              }
+                            </td>
+                            <td>
+                              {LeaveAprove !== true ? <></>
+                                :
+                                <div>
+                                  <FontAwesomeIcon icon={faXmarkSquare}
+                                      className='iconCross'
                                     onClick={() => {
                                       handleStatusUpdate(request._id, 'Rejected')
 
@@ -181,8 +191,8 @@ const EmployeeLeaves = () => {
                             </td>
                             <td>
                               {
-                                   DeletePermission !== true ? <>  </> :
-                                   <FontAwesomeIcon
+                                DeletePermission !== true ? <>  </> :
+                                  <FontAwesomeIcon
                                     onClick={() => handleDelete(request._id)}
                                     style={{ fontSize: 25, color: "darkred", cursor: "pointer" }}
                                     icon={faTrashCan} />
