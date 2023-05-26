@@ -218,11 +218,7 @@ const EmployeeLeaves = () => {
                                     onClick={() => {
                                       showModal(request._id)
                                     }}
-                                    style={{
-                                      fontSize: 25,
-                                      color: "darkred",
-                                      cursor: "pointer"
-                                    }}
+                                    style={{ marginLeft: "15px", color: "red", cursor: "pointer", fontSize:"14px" }}
                                     icon={faTrashCan} />
                               }
 
