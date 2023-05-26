@@ -1,7 +1,12 @@
-
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faCheckSquare, faInfoCircle, faTrashCan, faXmark, faXmarkCircle, faXmarkSquare } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCheckSquare,
+  faInfoCircle,
+  faTrashCan,
+  faXmarkSquare
+} from
+  '@fortawesome/free-solid-svg-icons'
 import {
   Container,
   Card,
@@ -11,10 +16,9 @@ import {
   Table,
   Row,
   Col,
-  Button,
   Modal,
   ModalHeader,
-  ModalBody, ModalFooter, UncontrolledAlert
+  ModalBody,
 } from "reactstrap";
 import '../assets/css/Leave.css'
 const EmployeeLeaves = () => {
@@ -22,8 +26,6 @@ const EmployeeLeaves = () => {
   const [loading, setLoading] = useState(true);
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
   const [SelectedLeave, setSelectedLeave] = useState(null)
-  const [AddPermission, setAddPermission] = useState(true)
-  const [UpdatePermsission, setUpdatePermsission] = useState(true)
   const [DeletePermission, setDeletePermission] = useState(true)
   const [LeaveAprove, setLeaveAprove] = useState(true)
   useEffect((id) => {
@@ -56,7 +58,8 @@ const EmployeeLeaves = () => {
   }, []);
   const handleStatusUpdate = async (id, status) => {
     try {
-      const response = await fetch(`https://employee-backend-one.vercel.app/leave/${id}/${status}`, { method: 'PUT' });
+      const response = await fetch(`https://employee-backend-one.vercel.app/leave/${id}/${status}`,
+        { method: 'PUT' });
       const data = await response.json();
       setLeaveRequests(prevState => {
         const index = prevState.findIndex(request => request._id === id);
@@ -71,7 +74,6 @@ const EmployeeLeaves = () => {
       console.error(error);
     }
   };
-
 
   const handleDelete = async (id) => {
     let result = fetch(`https://employee-backend-one.vercel.app/leaveDelete/${id}`, {
@@ -115,7 +117,6 @@ const EmployeeLeaves = () => {
       let response = await fetch(`https://employee-backend-one.vercel.app/userGetId/${id}`);
       response = await response.json();
 
-
     } catch (error) {
       console.error(error);
     }
@@ -124,7 +125,6 @@ const EmployeeLeaves = () => {
     getAdminRequest()
     getSuperAdminRequest()
   }, [])
-
   return (
     <>
       <div className="content">
@@ -158,7 +158,12 @@ const EmployeeLeaves = () => {
                             <td>{request.leaveFor}</td>
                             <td><FontAwesomeIcon icon={faInfoCircle}
                               className='icon'
-                              style={{ fontSize: "24px", color: "lightblue", marginLeft: 10, cursor: "pointer" }}
+                              style={{
+                                fontSize: "24px",
+                                color: "lightblue",
+                                marginLeft: 10,
+                                cursor: "pointer"
+                              }}
                               onClick={(item) => {
                                 showDetailsModal(request);
                               }}
@@ -172,7 +177,6 @@ const EmployeeLeaves = () => {
                                   <FontAwesomeIcon icon={faCheckSquare}
                                     className='iconCheck'
                                     onClick={() => handleStatusUpdate(request._id, 'Approved',)} />
-
                                 </div>
                               }
                             </td>
@@ -181,7 +185,7 @@ const EmployeeLeaves = () => {
                                 :
                                 <div>
                                   <FontAwesomeIcon icon={faXmarkSquare}
-                                      className='iconCross'
+                                    className='iconCross'
                                     onClick={() => {
                                       handleStatusUpdate(request._id, 'Rejected')
 
@@ -194,7 +198,11 @@ const EmployeeLeaves = () => {
                                 DeletePermission !== true ? <>  </> :
                                   <FontAwesomeIcon
                                     onClick={() => handleDelete(request._id)}
-                                    style={{ fontSize: 25, color: "darkred", cursor: "pointer" }}
+                                    style={{
+                                      fontSize: 25,
+                                      color: "darkred",
+                                      cursor: "pointer"
+                                    }}
                                     icon={faTrashCan} />
                               }
                             </td>
@@ -209,17 +217,19 @@ const EmployeeLeaves = () => {
           </Col>
         </Row>
         <Row>
-          <Modal isOpen={isDetailsModalOpen}
+          {SelectedLeave && (<Modal
+            isOpen={isDetailsModalOpen}
             onCancel={handleCancelDetailsModal}>
-            <ModalHeader toggle={handleCancelDetailsModal}
-            >Employee Details</ModalHeader>
-            {SelectedLeave && (<ModalBody>
+            <ModalHeader
+              toggle={handleCancelDetailsModal}>
+              Employee Details</ModalHeader>
+            <ModalBody>
               <Container>
                 <Row>
                   <Col xs={12} sm={12}>
                     <Card className="card mb-3">
                       <div className="card-body">
-                        <Row >
+                        <Row>
                           <Col sm="5">
                             <h6 className="mb-0">Full Name</h6>
                           </Col>
@@ -228,7 +238,7 @@ const EmployeeLeaves = () => {
                           </Col>
                         </Row>
                         <hr />
-                        <Row >
+                        <Row>
                           <Col sm="5">
                             <h6 className="mb-0">Email</h6>
                           </Col>
@@ -238,7 +248,7 @@ const EmployeeLeaves = () => {
                         </Row>
                         <hr />
 
-                        <Row >
+                        <Row>
                           <Col sm="5">
                             <h6 className="mb-0">Duration</h6>
                           </Col>
@@ -248,7 +258,7 @@ const EmployeeLeaves = () => {
                         </Row>
                         <hr />
 
-                        <Row >
+                        <Row>
                           <Col sm="5">
                             <h6 className="mb-0">Applied Date</h6>
                           </Col>
@@ -271,7 +281,7 @@ const EmployeeLeaves = () => {
                               </>
                             )}
                           </Col>
-                        </Row >
+                        </Row>
                         <hr />
                         <Row className="row">
                           <Col sm="5">
@@ -284,7 +294,7 @@ const EmployeeLeaves = () => {
                               </>
                             )}
                           </Col>
-                        </Row >
+                        </Row>
                         <hr />
                         <Row className="row">
                           <Col sm="5">
@@ -297,7 +307,7 @@ const EmployeeLeaves = () => {
                               </>
                             )}
                           </Col>
-                        </Row >
+                        </Row>
                         <hr />
                         <Row className="row">
                           <Col sm="5">
@@ -306,18 +316,17 @@ const EmployeeLeaves = () => {
                           <Col sm="5" className="text-info">
                             {SelectedLeave.status}
                           </Col>
-                        </Row >
+                        </Row>
                         <hr />
-
                       </div>
                     </Card>
                   </Col>
 
                 </Row>
               </Container>
-            </ModalBody>)}
+            </ModalBody>
           </Modal>
-
+          )}
         </Row>
       </div>
     </>

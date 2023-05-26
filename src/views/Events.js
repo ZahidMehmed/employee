@@ -293,7 +293,6 @@ function Events() {
                                           }}
                                         />
                                     }
-
                                   </td>
                                   {productToDelete && (
                                     <Modal title="Basic Modal"

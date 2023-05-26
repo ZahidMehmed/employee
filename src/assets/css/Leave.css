@@ -9,5 +9,5 @@
 }
 .iconCheck{font-size: 24px; color: rgb(8, 224, 58); cursor: pointer;}
 .iconCheck:hover{font-size: 26px; color: rgb(26, 245, 77);}
-.iconCross{font-size: 26px; color: rgb(173, 16, 16); cursor: pointer;}
-.iconCross:hover{font-size: 28px; color: rgb(207, 8, 8);}
+.iconCross{font-size: 24px; color: rgb(173, 16, 16); cursor: pointer;}
+.iconCross:hover{font-size: 26px; color: rgb(207, 8, 8);}
