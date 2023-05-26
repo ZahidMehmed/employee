@@ -18,7 +18,6 @@ const LogIn = () => {
   const [password, setpassword] = useState('');
   const [Err, setErr] = useState(false);
   const Navigate = useNavigate();
-
   const handleClick = async (e) => {
     console.log('Email: ', email, ' Password: ', password);
     setErr(false); // reset the error state

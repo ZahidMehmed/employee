@@ -189,7 +189,7 @@ function Events() {
 
   let value = localStorage.getItem('user')
   const authV = JSON.parse(value)
-  let id = authV.user._id
+  let id = authV?.user?._id
 
   const getAdminRequest = async () => {
     let result = await fetch(`https://employee-backend-one.vercel.app/AdminPermisionsId/${id}`)

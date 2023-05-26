@@ -26,8 +26,9 @@ import routes from "routes.js";
 function Header(props) {
  const Navigate  = useNavigate()
   const logOut = () => {
+     Navigate('/SignIn')
       localStorage.clear();
-      Navigate('/LogIn')
+      Navigate('/SignIn')
     }
   
   const [isOpen, setIsOpen] = React.useState(false);

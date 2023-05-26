@@ -71,7 +71,7 @@ const EmployeeTables = () => {
 
   let value = localStorage.getItem('user')
   const authV = JSON.parse(value)
-  let id = authV.user._id
+  let id = authV?.user?._id
 
 
 
