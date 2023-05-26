@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { ExclamationCircleFilled } from '@ant-design/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCheckSquare,
@@ -16,11 +17,17 @@ import {
   Table,
   Row,
   Col,
-  Modal,
   ModalHeader,
   ModalBody,
+  Button,
+
 } from "reactstrap";
+import { Modal, Image, Space } from 'antd';
 import '../assets/css/Leave.css'
+
+const { confirm } = Modal;
+
+
 const EmployeeLeaves = () => {
   const [leaveRequests, setLeaveRequests] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,6 +35,26 @@ const EmployeeLeaves = () => {
   const [SelectedLeave, setSelectedLeave] = useState(null)
   const [DeletePermission, setDeletePermission] = useState(true)
   const [LeaveAprove, setLeaveAprove] = useState(true)
+  const [Delete, setDelete] = useState("")
+  const showDeleteConfirm = (id) => {
+    console.log("Id: "+id)
+    setDelete(id)
+    confirm({
+      title: 'Are you sure delete this task?',
+      icon: <ExclamationCircleFilled />,
+      content: 'Some descriptions',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      onOk() {   
+      handleDelete(Delete)
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  };
+
   useEffect((id) => {
     // Fetch all leave requests from the server
     const fetchLeaveRequests = async () => {
@@ -125,8 +152,10 @@ const EmployeeLeaves = () => {
     getAdminRequest()
     getSuperAdminRequest()
   }, [])
+
   return (
     <>
+
       <div className="content">
         <Row>
           <Col md="12">
@@ -176,7 +205,8 @@ const EmployeeLeaves = () => {
                                 <div>
                                   <FontAwesomeIcon icon={faCheckSquare}
                                     className='iconCheck'
-                                    onClick={() => handleStatusUpdate(request._id, 'Approved',)} />
+                                    onClick={() =>
+                                      handleStatusUpdate(request._id, 'Approved',)} />
                                 </div>
                               }
                             </td>
@@ -197,7 +227,9 @@ const EmployeeLeaves = () => {
                               {
                                 DeletePermission !== true ? <>  </> :
                                   <FontAwesomeIcon
-                                    onClick={() => handleDelete(request._id)}
+                                    onClick={() =>
+                                      showDeleteConfirm(request._id)
+                                    }
                                     style={{
                                       fontSize: 25,
                                       color: "darkred",
@@ -218,11 +250,9 @@ const EmployeeLeaves = () => {
         </Row>
         <Row>
           {SelectedLeave && (<Modal
-            isOpen={isDetailsModalOpen}
+            open={isDetailsModalOpen}
             onCancel={handleCancelDetailsModal}>
-            <ModalHeader
-              toggle={handleCancelDetailsModal}>
-              Employee Details</ModalHeader>
+          
             <ModalBody>
               <Container>
                 <Row>
@@ -333,4 +363,7 @@ const EmployeeLeaves = () => {
   )
 }
 
+
 export default EmployeeLeaves
+
+
