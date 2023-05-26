@@ -16,8 +16,6 @@ const routes = [
     element:<Dashboard />
 
   },
-
-
   {
     name :"Employee Registration",
     path:"/employeeForm",
@@ -34,11 +32,11 @@ const routes = [
     path:"/EmpAtendHistory/:id",
     element:<EmpAtendHistory />
   },
-  {
-    name :" User Profile",
-    path:"/userProfile",
-    element:<User />
-  },
+  // {
+  //   name :" User Profile",
+  //   path:"/userProfile",
+  //   element:<User />
+  // },
   {
     name :"Uupdate Event Detail",
     path:"/updateEvent/:id",

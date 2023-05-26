@@ -179,7 +179,7 @@ function Sidebar(props) {
                   </NavLink>
                 </li>
               }
-              <li>
+              {/* <li>
                 <NavLink
                   to="/userProfile"
                   className="nav-link d-flex align-items-center"
@@ -187,12 +187,10 @@ function Sidebar(props) {
                   <div className="d-flex align-items-center">
                     <FontAwesomeIcon icon={faUser}
                       style={{ fontSize: 30, marginRight: 10 }} className="text-primary" /></div>
-                  {/* <i className="nc-icon nc-tile-56" /> */}
+     
                   <p>Profile</p>
                 </NavLink>
-              </li>
-
-
+              </li> */}
             </Nav>
 
           </div>

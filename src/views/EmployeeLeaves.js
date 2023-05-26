@@ -251,7 +251,9 @@ const EmployeeLeaves = () => {
         <Row>
           {SelectedLeave && (<Modal
             open={isDetailsModalOpen}
+            onOk={handleCancelDetailsModal}
             onCancel={handleCancelDetailsModal}>
+              
           
             <ModalBody>
               <Container>
