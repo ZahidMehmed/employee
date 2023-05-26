@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { ExclamationCircleFilled } from '@ant-design/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCheckSquare,
@@ -17,15 +16,12 @@ import {
   Table,
   Row,
   Col,
-  ModalHeader,
   ModalBody,
-  Button,
-
 } from "reactstrap";
-import { Modal, Image, Space } from 'antd';
+import { Modal } from 'antd';
 import '../assets/css/Leave.css'
+import { Link, useNavigate } from "react-router-dom";
 
-const { confirm } = Modal;
 
 
 const EmployeeLeaves = () => {
@@ -35,26 +31,17 @@ const EmployeeLeaves = () => {
   const [SelectedLeave, setSelectedLeave] = useState(null)
   const [DeletePermission, setDeletePermission] = useState(true)
   const [LeaveAprove, setLeaveAprove] = useState(true)
-  const [Delete, setDelete] = useState("")
-  const showDeleteConfirm = (id) => {
-    console.log("Id: "+id)
-    setDelete(id)
-    confirm({
-      title: 'Are you sure delete this task?',
-      icon: <ExclamationCircleFilled />,
-      content: 'Some descriptions',
-      okText: 'Yes',
-      okType: 'danger',
-      cancelText: 'No',
-      onOk() {   
-      handleDelete(Delete)
-      },
-      onCancel() {
-        console.log('Cancel');
-      },
-    });
+  const Navigate = useNavigate();
+  const [productToDelete, setProductToDelete] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = (id) => {
+    setProductToDelete(id)
+    setIsModalOpen(true);
   };
-
+  const handleCancel = () => {
+    setProductToDelete(null); // reset the selected product to delete
+    setIsModalOpen(false);
+  };
   useEffect((id) => {
     // Fetch all leave requests from the server
     const fetchLeaveRequests = async () => {
@@ -103,6 +90,7 @@ const EmployeeLeaves = () => {
   };
 
   const handleDelete = async (id) => {
+    setIsModalOpen(false);
     let result = fetch(`https://employee-backend-one.vercel.app/leaveDelete/${id}`, {
       method: 'DELETE',
       headers: {
@@ -183,7 +171,7 @@ const EmployeeLeaves = () => {
                         {leaveRequests.map((request, index) => (
                           <tr key={request._id}>
                             <td>{index + 1}</td>
-                            <td></td>
+                            <td>{request.email}</td>
                             <td>{request.leaveFor}</td>
                             <td><FontAwesomeIcon icon={faInfoCircle}
                               className='icon'
@@ -227,9 +215,9 @@ const EmployeeLeaves = () => {
                               {
                                 DeletePermission !== true ? <>  </> :
                                   <FontAwesomeIcon
-                                    onClick={() =>
-                                      showDeleteConfirm(request._id)
-                                    }
+                                    onClick={() => {
+                                      showModal(request._id)
+                                    }}
                                     style={{
                                       fontSize: 25,
                                       color: "darkred",
@@ -237,6 +225,16 @@ const EmployeeLeaves = () => {
                                     }}
                                     icon={faTrashCan} />
                               }
+
+                              <Modal title="Basic Modal" open={isModalOpen} onOk={() => {
+                                let deleted = handleDelete(productToDelete)
+                                if (deleted) {
+                                  Navigate('/Leaves')
+                                }
+                              }}
+                                onCancel={handleCancel}>
+                                <p>Are You sure Want to Delete</p>
+                              </Modal>
                             </td>
                           </tr>
                         ))}
@@ -253,8 +251,8 @@ const EmployeeLeaves = () => {
             open={isDetailsModalOpen}
             onOk={handleCancelDetailsModal}
             onCancel={handleCancelDetailsModal}>
-              
-          
+
+
             <ModalBody>
               <Container>
                 <Row>
