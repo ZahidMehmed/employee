@@ -21,7 +21,7 @@ const EmpAtendHistory = () => {
   const params = useParams();
   console.log("ID: " + params.id)
   const getAPIby = async () => {
-    let response = await fetch(`http://localhost:350/atten_history`)
+    let response = await fetch(`https://employee-backend-one.vercel.app/atten_history`)
     response = await response.json()
     const filteredData = response.filter(item => item.employeeId === params.id)
     console.log(response)
